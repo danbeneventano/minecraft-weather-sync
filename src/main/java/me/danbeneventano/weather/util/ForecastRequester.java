@@ -1,5 +1,7 @@
 package me.danbeneventano.weather.util;
 
+import me.danbeneventano.weather.WeatherPlugin;
+import org.bukkit.Bukkit;
 import tk.plogitech.darksky.api.jackson.DarkSkyJacksonClient;
 import tk.plogitech.darksky.forecast.*;
 import tk.plogitech.darksky.forecast.model.Forecast;
@@ -19,13 +21,15 @@ public class ForecastRequester {
         try {
             return Optional.of(client.forecast(generateRequest(latitude, longitude)));
         } catch (ForecastException e) {
+            e.printStackTrace();
+            Bukkit.getLogger().warning("Could not retrieve forecast from Dark Sky. Is your API key valid?");
             return Optional.empty();
         }
     }
 
     private ForecastRequest generateRequest(Latitude latitude, Longitude longitude) {
         return new ForecastRequestBuilder()
-                .key(new APIKey("b3d0589e5a90ee0dcdddb40751724b7a"))
+                .key(new APIKey(WeatherPlugin.instance().getConfig().getString("darkSkyApiKey")))
                 .location(new GeoCoordinates(longitude, latitude))
                 .language(ForecastRequestBuilder.Language.en).build();
     }

@@ -23,6 +23,7 @@ public class WeatherPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+        saveDefaultConfig();
         weatherPlayerManager = new WeatherPlayerManager();
         geocoder = new Geocoder();
         forecastRequester = new ForecastRequester();

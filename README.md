@@ -8,6 +8,9 @@ Spigot plugin that converts in-game coordinates to real coordinates then synchro
 
 /weather teleport <location> - teleport to where a real location would be in-game
 
+## Screenshot
+
+![Screenshot](https://github.com/danbeneventano/minecraft-weather-sync/blob/master/screenshot.png?raw=true)
 
 ## Thanks to
 [google-maps-services-java](https://github.com/googlemaps/google-maps-services-java)

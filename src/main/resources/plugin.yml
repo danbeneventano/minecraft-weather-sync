@@ -1,0 +1,9 @@
+version: @version@
+name: Weather
+author: Dan Beneventano
+description: Weather
+
+main: me.danbeneventano.weather.WeatherPlugin
+
+commands:
+  weather:

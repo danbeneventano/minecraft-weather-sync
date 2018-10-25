@@ -1,5 +1,5 @@
 # minecraft-weather-sync
-Converts in-game coordinates to real coordinates then synchronizes in-game weather with real life weather at that location. The circumference of the globe is 30,000 blocks.
+Spigot plugin that converts in-game coordinates to real coordinates then synchronizes in-game weather with real life weather at that location. The circumference of the globe is 30,000 blocks.
 
 ## Commands
 /weather - show weather at your location

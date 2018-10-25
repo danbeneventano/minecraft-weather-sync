@@ -50,8 +50,12 @@ public class WeatherPlayer {
         });
     }
 
+    public Optional<GeocodingResult> getGeoLocation() {
+        return WeatherPlugin.instance().getGeocoder().getLocation(latitude, longitude);
+    }
+
     public String retrieveLocationString() {
-        Optional<GeocodingResult> result = WeatherPlugin.instance().getGeocoder().getLocation(latitude, longitude);
+        Optional<GeocodingResult> result = getGeoLocation();
         if (result.isPresent()) {
             locationString = result.get().formattedAddress;
         } else {

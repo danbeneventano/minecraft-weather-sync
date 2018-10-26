@@ -6,7 +6,7 @@ Spigot plugin that converts in-game coordinates to real coordinates then synchro
 * /weather update - update your location instantly (location updates every ten minutes otherwise)
 * /weather teleport <location> - teleport to where a real location would be in-game
 
-## Screenshot
+## Screenshots
 
 ![/weather](https://github.com/danbeneventano/minecraft-weather-sync/blob/master/screenshot.png?raw=true)
 ![/forecast](https://github.com/danbeneventano/minecraft-weather-sync/blob/master/screenshot2.png?raw=true)

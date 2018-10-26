@@ -8,6 +8,8 @@ import tk.plogitech.darksky.forecast.model.Forecast;
 import tk.plogitech.darksky.forecast.model.Latitude;
 import tk.plogitech.darksky.forecast.model.Longitude;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
 public class ForecastRequester {
@@ -27,10 +29,30 @@ public class ForecastRequester {
         }
     }
 
-    private ForecastRequest generateRequest(Latitude latitude, Longitude longitude) {
+    public Optional<Forecast> getForecast(ForecastRequest request) {
+        try {
+            return Optional.of(client.forecast(request));
+        } catch (ForecastException e) {
+            e.printStackTrace();
+            Bukkit.getLogger().warning("Could not retrieve forecast from Dark Sky. Is your API key valid?");
+            return Optional.empty();
+        }
+    }
+
+    public ForecastRequest generateRequest(Latitude latitude, Longitude longitude) {
         return new ForecastRequestBuilder()
                 .key(new APIKey(WeatherPlugin.instance().getConfig().getString("darkSkyApiKey")))
                 .location(new GeoCoordinates(longitude, latitude))
+                .units(ForecastRequestBuilder.Units.us)
+                .language(ForecastRequestBuilder.Language.en).build();
+    }
+
+    public ForecastRequest generateRequest(Latitude latitude, Longitude longitude, int daysAhead) {
+        return new ForecastRequestBuilder()
+                .key(new APIKey(WeatherPlugin.instance().getConfig().getString("darkSkyApiKey")))
+                .location(new GeoCoordinates(longitude, latitude))
+                .units(ForecastRequestBuilder.Units.us)
+                .time(Instant.now().plus(daysAhead, ChronoUnit.DAYS))
                 .language(ForecastRequestBuilder.Language.en).build();
     }
 }

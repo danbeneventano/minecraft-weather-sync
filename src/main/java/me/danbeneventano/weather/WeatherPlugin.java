@@ -1,5 +1,6 @@
 package me.danbeneventano.weather;
 
+import me.danbeneventano.weather.cmd.ForecastCommand;
 import me.danbeneventano.weather.cmd.WeatherCommand;
 import me.danbeneventano.weather.listener.PlayerListener;
 import me.danbeneventano.weather.player.WeatherPlayerManager;
@@ -31,6 +32,7 @@ public class WeatherPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerListener(), this);
         Bukkit.getOnlinePlayers().forEach(player -> weatherPlayerManager.addWeatherPlayer(player));
         getCommand("weather").setExecutor(new WeatherCommand());
+        getCommand("forecast").setExecutor(new ForecastCommand());
     }
 
     @Override

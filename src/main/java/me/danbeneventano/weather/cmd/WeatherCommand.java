@@ -28,11 +28,12 @@ public class WeatherCommand implements CommandExecutor {
         WeatherPlayer wp = WeatherPlugin.instance().getWeatherPlayerManager().getWeatherPlayer(player.getUniqueId()).get();
         if (args.length == 0) {
             DecimalFormat format = new DecimalFormat("###.#####");
+            DecimalFormat temperatureFormat = new DecimalFormat("###");
             sendMessages(player,
                     GRAY + "In-game coordinates: " + YELLOW + "X: " + wp.getGameLocation().getBlockX() + " Y: " + wp.getGameLocation().getBlockY() + " Z: " + wp.getGameLocation().getBlockZ(),
                     GRAY + "Real life coordinates: " + BLUE + "Latitude: " + format.format(wp.getLatitude().value()) + ", Longitude: " + format.format(wp.getLongitude().value()),
                     GRAY + "Real life location: " + GOLD + (wp.retrieveLocationString().isEmpty() ? "Unknown" : wp.retrieveLocationString()),
-                    GRAY + "Weather: " + LIGHT_PURPLE + wp.getForecast().getCurrently().getSummary());
+                    GRAY + "Weather: " + LIGHT_PURPLE + temperatureFormat.format(wp.getForecast().getCurrently().getTemperature()) + "\u2109 - " + wp.getForecast().getCurrently().getSummary());
             TextComponent mapsLink = new TextComponent("Google Maps Link");
             mapsLink.setUnderlined(true);
             mapsLink.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://maps.google.com/maps?q=" + wp.getLatitude().value() + "," + wp.getLongitude().value()));

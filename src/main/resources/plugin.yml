@@ -7,3 +7,4 @@ main: me.danbeneventano.weather.WeatherPlugin
 
 commands:
   weather:
+  forecast:

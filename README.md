@@ -8,7 +8,8 @@ Spigot plugin that converts in-game coordinates to real coordinates then synchro
 
 ## Screenshot
 
-![Screenshot](https://github.com/danbeneventano/minecraft-weather-sync/blob/master/screenshot.png?raw=true)
+![/weather](https://github.com/danbeneventano/minecraft-weather-sync/blob/master/screenshot.png?raw=true)
+![/forecast](https://github.com/danbeneventano/minecraft-weather-sync/blob/master/screenshot2.png?raw=true)
 
 ## Obtaining API keys
 

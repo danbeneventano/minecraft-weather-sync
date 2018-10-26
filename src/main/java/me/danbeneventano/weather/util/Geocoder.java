@@ -39,8 +39,7 @@ public class Geocoder {
             GeocodingResult[] results = GeocodingApi.geocode(context, locationString).await();
             return results.length > 0 ? Optional.of(results[0]) : Optional.empty();
         } catch (ApiException e) {
-            Bukkit.getLogger().severe("Invalid Google Maps API key. Disabling Weather plugin.");
-            Bukkit.getServer().getPluginManager().disablePlugin(WeatherPlugin.instance());
+            Bukkit.getLogger().warning("Google Maps API error. Check your key and permissions.");
             return Optional.empty();
         } catch (InterruptedException | IOException e) {
             return Optional.empty();
